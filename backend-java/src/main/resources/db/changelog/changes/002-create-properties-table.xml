@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="002-create-properties-table" author="rentpeeasy">
+        <!-- Main properties table -->
+        <createTable tableName="properties">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="type" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locality" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_unit" type="varchar(20)" defaultValue="month"/>
+            <column name="beds" type="integer"/>
+            <column name="baths" type="integer"/>
+            <column name="square_feet" type="integer"/>
+            <column name="is_featured" type="boolean" defaultValueBoolean="false"/>
+            <column name="is_verified" type="boolean" defaultValueBoolean="false"/>
+            <column name="owner_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_properties_owner" 
+                             references="users(id)" deleteCascade="true"/>
+            </column>
+            <column name="contact_number" type="varchar(20)"/>
+            <column name="status" type="varchar(20)" defaultValue="AVAILABLE"/>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+
+        <!-- Property images table -->
+        <createTable tableName="property_images">
+            <column name="property_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_property_images" 
+                             references="properties(id)" deleteCascade="true"/>
+            </column>
+            <column name="image_url" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Property amenities table -->
+        <createTable tableName="property_amenities">
+            <column name="property_id" type="uuid">
+                <constraints nullable="false" foreignKeyName="fk_property_amenities" 
+                             references="properties(id)" deleteCascade="true"/>
+            </column>
+            <column name="amenity" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

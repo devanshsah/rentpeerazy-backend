@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="005-create-indexes" author="rentpeeasy">
+        <!-- Index on properties city -->
+        <createIndex tableName="properties" indexName="idx_properties_city">
+            <column name="city"/>
+        </createIndex>
+
+        <!-- Index on properties type -->
+        <createIndex tableName="properties" indexName="idx_properties_type">
+            <column name="type"/>
+        </createIndex>
+
+        <!-- Index on properties price -->
+        <createIndex tableName="properties" indexName="idx_properties_price">
+            <column name="price"/>
+        </createIndex>
+
+        <!-- Index on properties owner -->
+        <createIndex tableName="properties" indexName="idx_properties_owner">
+            <column name="owner_id"/>
+        </createIndex>
+
+        <!-- Index on favorites user -->
+        <createIndex tableName="favorites" indexName="idx_favorites_user">
+            <column name="user_id"/>
+        </createIndex>
+
+        <!-- Index on favorites property -->
+        <createIndex tableName="favorites" indexName="idx_favorites_property">
+            <column name="property_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
