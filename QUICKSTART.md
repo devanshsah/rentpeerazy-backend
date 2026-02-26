@@ -53,10 +53,10 @@ cd backend-java
 
 # Update application.properties with your database credentials
 # Build the project
-mvn clean install
+./gradlew clean build
 
 # Run the application
-mvn spring-boot:run
+./gradlew bootRun
 ```
 
 Backend will start on http://localhost:8001
