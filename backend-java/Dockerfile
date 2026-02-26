@@ -11,6 +11,6 @@ RUN ./gradlew clean bootJar --no-daemon
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/build/libs/app.jar app.jar
 EXPOSE 8001
 ENTRYPOINT ["java", "-jar", "app.jar"]
