@@ -1,24 +1,12 @@
-FROM eclipse-temurin:17-jdk-alpine AS build
+FROM gradle:8.7-jdk17-alpine AS build
 WORKDIR /app
 
-# Copy Gradle wrapper and build files first (for better caching)
-COPY gradle gradle
-COPY gradlew .
-COPY build.gradle .
-COPY settings.gradle .
-
-# Fix line endings and permissions for gradlew
-RUN dos2unix gradlew 2>/dev/null || sed -i 's/\r$//' gradlew
-RUN chmod +x gradlew
-
-# Download dependencies (cached layer)
-RUN ./gradlew dependencies --no-daemon || true
-
-# Copy source code
+# Copy project files
+COPY build.gradle settings.gradle ./
 COPY src ./src
 
 # Build the application
-RUN ./gradlew clean bootJar --no-daemon -x test
+RUN gradle clean bootJar --no-daemon -x test
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
