@@ -234,7 +234,7 @@ docker-compose build --no-cache
 docker-compose up
 ```
 
-### Backend Not Starting
+### Backend Issues
 
 ```bash
 # Check logs
@@ -242,7 +242,7 @@ docker-compose logs backend
 
 # Or if running locally
 cd backend-java
-mvn clean install -X
+./gradlew clean build -x test --stacktrace
 ```
 
 ### Database Connection Issues
