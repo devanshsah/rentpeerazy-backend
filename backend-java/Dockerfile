@@ -7,6 +7,10 @@ COPY gradlew .
 COPY build.gradle .
 COPY settings.gradle .
 
+# Fix line endings and permissions for gradlew
+RUN dos2unix gradlew 2>/dev/null || sed -i 's/\r$//' gradlew
+RUN chmod +x gradlew
+
 # Download dependencies (cached layer)
 RUN ./gradlew dependencies --no-daemon || true
 
