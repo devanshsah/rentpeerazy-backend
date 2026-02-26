@@ -103,8 +103,8 @@ spring.datasource.password=your_password
 3. **Build and run backend**
 ```bash
 cd backend-java
-mvn clean install
-mvn spring-boot:run
+./gradlew clean build
+./gradlew bootRun
 ```
 
 Backend will run on http://localhost:8001
