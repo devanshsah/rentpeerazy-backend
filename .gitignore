@@ -42,4 +42,7 @@ yarn-error.log*
 
 # Test
 test_reports/
-*.test.js.snap
+*.test.js.snap-e 
+# Environment files
+*.env
+*.env.*
