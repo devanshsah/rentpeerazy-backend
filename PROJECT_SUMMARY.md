@@ -332,8 +332,8 @@ REACT_APP_BACKEND_URL=http://localhost:8001
 ### Backend Development
 ```bash
 cd backend-java
-mvn clean install
-mvn spring-boot:run
+./gradlew clean build
+./gradlew bootRun
 ```
 
 ### Frontend Development
