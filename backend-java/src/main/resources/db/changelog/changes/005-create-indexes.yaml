@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-create-indexes
+      author: rentpeeasy
+      changes:
+        - createIndex:
+            tableName: properties
+            indexName: idx_properties_city
+            columns:
+              - column:
+                  name: city
+        
+        - createIndex:
+            tableName: properties
+            indexName: idx_properties_type
+            columns:
+              - column:
+                  name: type
+        
+        - createIndex:
+            tableName: properties
+            indexName: idx_properties_price
+            columns:
+              - column:
+                  name: price
+        
+        - createIndex:
+            tableName: properties
+            indexName: idx_properties_owner
+            columns:
+              - column:
+                  name: owner_id
+        
+        - createIndex:
+            tableName: favorites
+            indexName: idx_favorites_user
+            columns:
+              - column:
+                  name: user_id
+        
+        - createIndex:
+            tableName: favorites
+            indexName: idx_favorites_property
+            columns:
+              - column:
+                  name: property_id
