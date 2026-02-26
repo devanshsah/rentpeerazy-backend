@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-favorites-table
+      author: rentpeeasy
+      changes:
+        - createTable:
+            tableName: favorites
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_favorites_user
+                    references: users(id)
+                    deleteCascade: true
+              - column:
+                  name: property_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_favorites_property
+                    references: properties(id)
+                    deleteCascade: true
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        
+        - addUniqueConstraint:
+            tableName: favorites
+            columnNames: user_id, property_id
+            constraintName: uk_favorites_user_property
