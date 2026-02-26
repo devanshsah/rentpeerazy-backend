@@ -1,13 +1,20 @@
 FROM eclipse-temurin:17-jdk-alpine AS build
 WORKDIR /app
+
+# Copy Gradle wrapper and build files first (for better caching)
 COPY gradle gradle
 COPY gradlew .
-COPY gradlew.bat .
 COPY build.gradle .
 COPY settings.gradle .
-RUN ./gradlew --version
+
+# Download dependencies (cached layer)
+RUN ./gradlew dependencies --no-daemon || true
+
+# Copy source code
 COPY src ./src
-RUN ./gradlew clean bootJar --no-daemon
+
+# Build the application
+RUN ./gradlew clean bootJar --no-daemon -x test
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
