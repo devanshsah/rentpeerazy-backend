@@ -1,19 +1,14 @@
-# Gradle
+# Gradle build outputs
 .gradle/
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!gradle/wrapper/gradle-wrapper.properties
 
-# IDE
+# IDE files
 .idea/
 .vscode/
 *.iml
 *.iws
 *.ipr
 .DS_Store
-
-# Logs
-*.log
 
 # Git
 .git/
@@ -24,9 +19,22 @@ README.md
 QUICKSTART.md
 PROJECT_SUMMARY.md
 ARCHITECTURE.md
+DOCKER_VS_LOCAL.md
+LOCAL_DEVELOPMENT.md
+WINDOWS_SETUP.md
 
-# Test
+# Scripts
+*.sh
+*.bat
+
+# Gradle wrapper (not needed with gradle image)
+gradle/
+gradlew
+gradlew.bat
+
+# Test outputs
 src/test/
 
 # Environment
 .env.local
+*.log
