@@ -14,7 +14,7 @@
 - **Database**: PostgreSQL 16
 - **ORM**: Hibernate/JPA
 - **Security**: Spring Security + JWT (jjwt 0.12.5)
-- **Build Tool**: Maven
+- **Build Tool**: Gradle 8.7 with Gradle Wrapper
 - **Authentication**: JWT with Access & Refresh Tokens
 
 ### Frontend
