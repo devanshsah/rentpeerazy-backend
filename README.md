@@ -52,7 +52,7 @@ A full-stack property rental platform built with **Java Spring Boot**, **Postgre
 ## 📋 Prerequisites
 
 - Java 17 or higher
-- Maven 3.6+
+- Gradle 8.7+ (included as Gradle Wrapper)
 - Node.js 18+ & Yarn
 - Docker & Docker Compose
 - PostgreSQL 16 (if running locally)
